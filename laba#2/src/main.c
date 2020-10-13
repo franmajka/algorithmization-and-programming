@@ -7,7 +7,7 @@ double getY(double a, double b, double x) {
   if (x == 0) {
     return 0;
   } else if (x > 1) {
-    return pow(a * M_E, -b * x) * cos(x * M_PI);
+    return a * exp(-b * x) * cos(x * M_PI);
   } else {
     return pow(x - 5, 2) * pow(pow(x + 1, 2), 1. / 3.);
   }
