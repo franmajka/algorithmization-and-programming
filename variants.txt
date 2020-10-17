@@ -1,3 +1,8 @@
 laba#1=16
 laba#2=16
 laba#3=16
+laba#4=16
+laba#5=16
+laba#6=16
+laba#7=16
+laba#8=16

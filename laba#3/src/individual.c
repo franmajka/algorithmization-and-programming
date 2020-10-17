@@ -18,10 +18,10 @@ int main() {
     return 1;
   }
 
-  long double current = 1;
-  long double sum = current;
+  double current = 1;
+  double sum = current;
   int i = 1;
-  long double q;
+  double q;
 
   do {
     q = 1. / (i * x);
@@ -30,7 +30,7 @@ int main() {
     i++;
   } while(fabs(q) > eps);
 
-  printf("Сумма ряда, вычисленная с точностью %f равна %Lf, на это пришлось потратить %d. Для сравнения e^(1/%lf) = %lf",
+  printf("Сумма ряда, вычисленная с точностью %f равна %lf, на это пришлось потратить %d. Для сравнения e^(1/%lf) = %lf",
     eps, sum, i, x, exp(1. / x));
 
   return 0;
