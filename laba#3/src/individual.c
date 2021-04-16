@@ -24,11 +24,10 @@ int main() {
   double q;
 
   do {
-    q = 1. / (i * x);
-    current *= q;
+    current *= 1. / (i * x);
     sum += current;
     i++;
-  } while(fabs(q) > eps);
+  } while(fabs(current) > eps);
 
   printf("Сумма ряда, вычисленная с точностью %f равна %lf, на это пришлось потратить %d. Для сравнения e^(1/%lf) = %lf",
     eps, sum, i, x, exp(1. / x));

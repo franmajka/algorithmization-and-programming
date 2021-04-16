@@ -1,2 +1,15 @@
 .vscode
 ap.code-workspace
+*.obj
+*.log
+*.ipch
+*.pdb
+*.exe
+*.vcxproj
+*.tlog
+*.recipe
+*.user
+*.filters
+*.debug
+qcustomplot
+*.ilk

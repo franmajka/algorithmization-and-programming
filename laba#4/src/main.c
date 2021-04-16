@@ -4,6 +4,12 @@
 #include <stdlib.h>
 #include <malloc.h>
 
+void fillWithRandom(int *arr, int length) {
+  for (int i = 0; i < length; i++) {
+    arr[i] = rand() % 41 - 20;
+  }
+}
+
 void printArr(int *arr, int length) {
   for (int i = 0; i < length; i++) {
     printf("%d ", arr[i]);
@@ -12,7 +18,13 @@ void printArr(int *arr, int length) {
   printf("\n");
 }
 
-int* shuffle(int *arr, int length){
+void copyArray(int *arrCopyTo, int *arrCopyFrom, int length) {
+  for (int i = 0; i < length; i++) {
+    arrCopyTo[i] = arrCopyFrom[i];
+  }
+}
+
+void shuffle(int *arr, int length){
   int *shuffled = (int*)malloc(sizeof(int) * length);
 
   for (int i = 0, j = 0; i < length / 2; i++, j += 2) {
@@ -23,7 +35,9 @@ int* shuffle(int *arr, int length){
     shuffled[j] = arr[i];
   }
 
-  return shuffled;
+  copyArray(arr, shuffled, length);
+
+  free(shuffled);
 }
 
 int main() {
@@ -41,14 +55,12 @@ int main() {
   }
 
   int *sequence = (int*)malloc(sizeof(int) * length);
-  for (int i = 0; i < length; i++) {
-    sequence[i] = rand() % 10;
-  }
+  fillWithRandom(sequence, length);
 
   printf("Случайная последовательность длинной в %d элементов:\n", length);
   printArr(sequence, length);
 
-  sequence = shuffle(sequence, length);
+  shuffle(sequence, length);
   printf("Эта же последовательность, но перемешанная согласно условию:\n");
   printArr(sequence, length);
 
