@@ -66,17 +66,25 @@ void PlotWidget::paintEvent(QPaintEvent *)
 
     painter.drawLines(axes);
 
-//    QVector<QLine> sections;
+    QVector<QLine> sections;
 
-//    for (int i = height() - SECTION_STEP; i >= 0; i -= SECTION_STEP) {
-//        sections.push_back({posXCenter - 5, i, posXCenter + 5, i});
-//    }
+    for (int i = center.y(); i <= height(); i += SECTION_STEP) {
+        sections.push_back({center.x() - 5, i, center.x() + 5, i});
+    }
 
-//    for (int i = SECTION_STEP; i < width(); i += SECTION_STEP) {
-//        sections.push_back({i, posYCenter + 5, i, posYCenter - 5});
-//    }
+    for (int i = center.y(); i > 0; i -= SECTION_STEP) {
+        sections.push_back({center.x() - 5, i, center.x() + 5, i});
+    }
 
-//    painter.drawLines(sections);
+    for (int i = center.x(); i <= width(); i += SECTION_STEP) {
+        sections.push_back({i, center.y() + 5, i, center.y() - 5});
+    }
+
+    for (int i = center.x(); i > 0; i -= SECTION_STEP) {
+        sections.push_back({i, center.y() + 5, i, center.y() - 5});
+    }
+
+    painter.drawLines(sections);
 
     if (pVec.empty()) return;
 
@@ -100,7 +108,7 @@ void PlotWidget::paintEvent(QPaintEvent *)
 
 double func(double x) {
 //    return log(sqrt(x));
-    return x * x * x;
+    return x * x;
 }
 
 void PlotWidget::setData(double axMin, double axMax)

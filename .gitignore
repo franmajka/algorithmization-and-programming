@@ -13,3 +13,4 @@ ap.code-workspace
 *.debug
 qcustomplot
 *.ilk
+*.o
